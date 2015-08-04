@@ -2,5 +2,6 @@
     <string name="app_name">Andorid exercise</string>
 
     <string name="hello_world">Hello world!</string>
+    <string name="prova">Questo è un messaggio di prova</string>
     <string name="action_settings">Settings</string>
 </resources>
