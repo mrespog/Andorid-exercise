@@ -4,6 +4,11 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
 
 public class MainActivity extends Activity {
@@ -12,6 +17,21 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        RadioGroup group1 = (RadioGroup) findViewById(R.id.orientation);
+        group1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId) {
+                    case R.id.horizontal:
+                        group.setOrientation(LinearLayout.HORIZONTAL);
+                        break;
+                    case R.id.vertical:
+                        group.setOrientation(LinearLayout.VERTICAL);
+                        break;
+                }
+            }
+        });
     }
 
     @Override
@@ -34,5 +54,15 @@ public class MainActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onClick(View viev) {
+        EditText input = (EditText) findViewById(R.id.main_input);
+        String string = input.getText().toString();
+        if(string.length() > 0) {
+            Toast.makeText(this, string, Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "You clicked me!!", Toast.LENGTH_SHORT).show();
+        }
     }
 }
